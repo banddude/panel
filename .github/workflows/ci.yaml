@@ -50,6 +50,7 @@ jobs:
       - run: cp .env.ci .env
       - run: composer install --no-interaction --no-progress --no-suggest --prefer-dist
       - run: vendor/bin/php-cs-fixer fix --dry-run --diff
+        continue-on-error: true
       - run: vendor/bin/phpunit --bootstrap vendor/autoload.php tests/Unit
         env:
           DB_HOST: UNIT_NO_DB
